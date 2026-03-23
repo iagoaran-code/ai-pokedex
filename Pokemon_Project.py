@@ -87,6 +87,7 @@ class PokedexOrchestrator:
             "name",
             "what",
             "which",
+            "tell",
         ]
 
         if any(word in question.lower() for word in stats_keywords):
