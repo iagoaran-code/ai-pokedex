@@ -36,7 +36,7 @@ class PokemonDataLoader:
         return docs
 
 
-# Creates vector DB, LLM, and Chains
+# Creates vector database, LLM, and Chains
 class PokedexEngine:
     """Handles the AI models and Retrieval logic."""
 
