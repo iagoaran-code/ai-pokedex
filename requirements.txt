@@ -7,3 +7,4 @@ langchain-experimental
 langchain-community
 tabulate
 pytest
+pytest-cov
