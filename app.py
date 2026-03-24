@@ -15,7 +15,7 @@ def get_pokedex():
 
 pokedex = get_pokedex()
 
-# Chat history
+# Chats history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
