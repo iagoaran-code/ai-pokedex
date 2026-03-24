@@ -1,24 +1,16 @@
+import pytest
 from src.router import PokedexOrchestrator
 
-def test_stats_keyword_logic():
-    """
-    Checks if our keyword logic correctly identifies a 'stats' question.
-    """
-    stats_keywords = ["highest", "lowest", "strongest", "fastest", "average"]
-    question = "Who is the fastest Pokemon?"
+def test_complex_filtering_query():
+    pokedex = PokedexOrchestrator(csv_path="pokemon.csv")
     
-    # This mimics the logic inside your get_answer method
-    is_stats_query = any(word in question.lower() for word in stats_keywords)
+    question = "Name all pokemon with more than 100 speed, but less than 50 attack"
     
-    assert is_stats_query is True, "The word 'fastest' should trigger stats logic"
+    response = pokedex.get_answer(question)
+    
+    assert isinstance(response, str)
+    
+    error_phrases = ["error", "could not find", "not available"]
+    assert not any(phrase in response.lower() for phrase in error_phrases),
 
-def test_lore_keyword_logic():
-    """
-    Checks if a non-stats question correctly bypasses the stats logic.
-    """
-    stats_keywords = ["highest", "lowest", "strongest", "fastest"]
-    question = "Tell me a story about Pikachu"
-    
-    is_stats_query = any(word in question.lower() for word in stats_keywords)
-    
-    assert is_stats_query is False, "A story request should not trigger stats logic"
+    assert len(response) > 10
