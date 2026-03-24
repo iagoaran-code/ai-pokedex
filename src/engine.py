@@ -1,4 +1,9 @@
-
+import os
+from dotenv import load_dotenv
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+from langchain_chroma import Chroma
+from langchain_classic.chains import RetrievalQA
+from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 
 # Creates vector database, LLM, and Chains
 class PokedexEngine:
