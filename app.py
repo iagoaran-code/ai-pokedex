@@ -1,5 +1,5 @@
 import streamlit as st
-from Pokemon_Project import PokedexOrchestrator
+from src.router import PokedexOrchestrator
 
 # Page setup
 st.set_page_config(page_title="AI Pokedex", page_icon="🔴")
