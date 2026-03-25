@@ -117,8 +117,7 @@ def test_keywords(mock_loader, mock_engine, question):
 # -------------------
 
 def test_loader_file_not_found():
-    with pytest.raises(Exception):
+    import pytest
+
+    with pytest.raises(FileNotFoundError):
         PokemonDataLoader("fake.csv")
-        pd.read_csv("non_existent_file.csv")
-    except FileNotFoundError:
-        pass
