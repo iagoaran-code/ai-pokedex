@@ -5,11 +5,6 @@ from unittest.mock import patch, MagicMock
 from src.loader import PokemonDataLoader
 from src.router import PokedexOrchestrator
 
-
-# -------------------
-# LOADER TESTS
-# -------------------
-
 def test_get_weaknesses():
     data = {
         "name": ["pikachu"],
@@ -49,11 +44,6 @@ def test_prepare_documents():
     assert len(docs) == 1
     assert "pikachu" in docs[0].page_content.lower()
 
-
-# -------------------
-# ROUTER TESTS
-# -------------------
-
 @patch("src.router.PokedexEngine")
 @patch("src.router.PokemonDataLoader")
 def test_stats_branch(mock_loader, mock_engine):
@@ -85,11 +75,6 @@ def test_lore_branch(mock_loader, mock_engine):
 
     assert result == "lore"
 
-
-# -------------------
-# KEYWORD COVERAGE
-# -------------------
-
 @pytest.mark.parametrize("question", [
     "highest attack",
     "lowest speed",
@@ -110,11 +95,6 @@ def test_keywords(mock_loader, mock_engine, question):
     result = orch.get_answer(question)
 
     assert result == "ok"
-
-
-# -------------------
-# ERROR TEST
-# -------------------
 
 def test_loader_file_not_found():
     import pytest
